@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Showdown: WWE Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4e3c3;
+            color: #000000;
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            flex-grow: 1;
+        }
+        h1, h2, h3 {
+            font-family: 'Impact', sans-serif;
+            color: #ff4d00;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        h1 {
+            font-size: 32px;
+            border-bottom: 2px solid #ff4d00;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            background-color: rgba(211, 211, 211, 0.3);
+            padding: 10px 20px;
+            position: relative;
+            margin-top: 20px;
+        }
+        h2:before {
+            content: '🏆';
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        h3 {
+            font-size: 20px;
+            color: #000000;
+            border-bottom: 1px solid #d4c4a8;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul li:before {
+            content: '💪';
+            position: absolute;
+            left: 0;
+        }
+        .wrestler-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e3d5b6;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .wrestler-link:hover {
+            background-color: #d4c4a8;
+        }
+        .wrestler-link img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .about {
+            background-color: #e3d5b6;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .about a {
+            color: #ff4d00;
+            text-decoration: none;
+        }
+        .about a:hover {
+            text-decoration: underline;
+        }
+        .code-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid #ff4d00;
+            padding: 15px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Showdown: WWE Edition</h1>
+        
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Master JavaScript fundamentals through WWE-inspired metaphors</li>
+            <li>Understand asynchronous programming concepts</li>
+            <li>Learn about Promises and async/await</li>
+            <li>Explore the dramatic parallels between coding and wrestling</li>
+        </ul>
+        
+        <h2>Why JavaScript and Wrestling?</h2>
+        <p>As Roland Barthes said, "Wrestling offers clarity—a morality tale where good and evil are laid bare." Similarly, JavaScript provides clear, predictable paths in programming. This tutorial combines both worlds to help you visualize and experience JavaScript concepts in a more engaging, narrative-driven way.</p>
+        
+        <h2>The Wrestlers</h2>
+        <div class="wrestler">
+            <a href="synchronous-smasher.html" class="wrestler-link">
+                <img src="IMAGES/sync.webp" alt="Synchronous Smasher">
+                <div>
+                    <h3>Synchronous Smasher</h3>
+                    <p>The Hero of sequential, predictable functions.</p>
+                </div>
+            </a>
+            <h4>Key Concepts:</h4>
+            <ul>
+                <li>Sequential execution</li>
+                <li>Predictable code flow</li>
+                <li>Blocking operations</li>
+            </ul>
+            <div class="code-block">
+                <pre><code>
+function syncMatch() {
+  console.log("Synchronous Smasher enters the ring.");
+  console.log("Synchronous Smasher throws a punch!");
+  console.log("Synchronous Smasher locks in a grapple!");
+  console.log("Synchronous Smasher slams the opponent!");
+  console.log("Synchronous Smasher leaves the ring victorious.");
+}
+
+syncMatch();
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="wrestler">
+            <a href="asynchronous-assassin.html" class="wrestler-link">
+                <img src="IMAGES/async.webp" alt="Asynchronous Assassin">
+                <div>
+                    <h3>Asynchronous Assassin</h3>
+                    <p>The Villain who breaks the orderly flow.</p>
+                </div>
+            </a>
+            <h4>Key Concepts:</h4>
+            <ul>
+                <li>Non-blocking operations</li>
+                <li>Callback functions</li>
+                <li>Event loop</li>
+            </ul>
+            <div class="code-block">
+                <pre><code>
+function asyncMatch() {
+  console.log("Asynchronous Assassin enters the ring!");
+
+  setTimeout(() => {
+    console.log("Asynchronous Assassin strikes after a 2-second delay!");
+  }, 2000);
+
+  console.log("Asynchronous Assassin distracts with a quick jab!");
+}
+
+asyncMatch();
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="wrestler">
+            <a href="promise-enforcer.html" class="wrestler-link">
+                <img src="IMAGES/promise.webp" alt="Promise Enforcer">
+                <div>
+                    <h3>Promise Enforcer</h3>
+                    <p>The Arbiter of Fate, guaranteeing resolution.</p>
+                </div>
+            </a>
+            <h4>Key Concepts:</h4>
+            <ul>
+                <li>Promises</li>
+                <li>Resolve and reject</li>
+                <li>Chaining with .then() and .catch()</li>
+            </ul>
+            <div class="code-block">
+                <pre><code>
+let promiseEnforcer = new Promise((resolve, reject) => {
+  console.log("Promise Enforcer enters the ring.");
+
+  let matchWon = true;  // Simulate outcome
+
+  setTimeout(() => {
+    if (matchWon) {
+      resolve("Promise Enforcer wins the match!");
+    } else {
+      reject("Promise Enforcer is defeated...");
+    }
+  }, 3000);
+});
+
+promiseEnforcer
+  .then(result => console.log(result))
+  .catch(error => console.log(error));
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="wrestler">
+            <a href="await-referee.html" class="wrestler-link">
+                <img src="IMAGES/await.webp" alt="Await Referee">
+                <div>
+                    <h3>Await Referee</h3>
+                    <p>The Guardian of Justice, ensuring fair play.</p>
+                </div>
+            </a>
+            <h4>Key Concepts:</h4>
+            <ul>
+                <li>Async/await syntax</li>
+                <li>Error handling with try/catch</li>
+                <li>Sequential asynchronous operations</li>
+            </ul>
+            <div class="code-block">
+                <pre><code>
+async function refereeMatch() {
+  console.log("Await Referee enters the ring, watching Promise Enforcer...");
+
+  try {
+    const result = await promiseEnforcer;
+    console.log("Await Referee declares: " + result);
+  } catch (error) {
+    console.log("Await Referee declares: " + error);
+  }
+}
+
+refereeMatch();
+                </code></pre>
+            </div>
+        </div>
+        
+        <div class="about">
+            <h2>About</h2>
+            <p>Inspired by Roland Barthes' "Mythologies" and the spectacle of WWE wrestling, this tutorial transforms JavaScript concepts into a high-flying wrestling match. By mapping wrestling archetypes to programming functions, we create a storyline where justice in code is served, just like in the wrestling ring.</p>
+            <p>Further Reading: <a href="https://web.mit.edu/21l.432/www/readings/Barthes_WorldOfWrestling.pdf" target="https://web.mit.edu/21l.432/www/readings/Barthes_WorldOfWrestling.pdf">"Mythologies" by Roland Barthes</a>, <a href="https://andersonguelphjs.github.io/OReilly_JavaScript_The_Good_Parts_May_2008.pdf#page=93.07" target="https://andersonguelphjs.github.io/OReilly_JavaScript_The_Good_Parts_May_2008.pdf#page=93.07">"JavaScript: The Good Parts" by Douglas Crockford</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous Assassin Match</title>
+    <style>
+        body {
+            font-family: 'Impact', sans-serif;
+            background-color: #f4e3c3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .wrestle-box {
+            background-color: #fff;
+            border: 5px solid #4d00ff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 600px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #4d00ff;
+            margin-bottom: 20px;
+        }
+        #ring {
+            width: 300px;
+            height: 200px;
+            margin: 0 auto 20px;
+            background-color: #e3d5b6;
+            border: 3px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        #wrestler {
+            width: 50px;
+            height: 50px;
+            background-color: #4d00ff;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 75px;
+            transition: left 0.5s ease-in-out;
+        }
+        #moveList {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4d00ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3d00cc;
+        }
+        #codeBlock {
+            background-color: #f5f5f5;
+            border-left: 4px solid #4d00ff;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: #ffff00;
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrestle-box">
+        <h1>Asynchronous Assassin Match</h1>
+        <div id="ring">
+            <div id="wrestler"></div>
+        </div>
+        <div id="moveList"></div>
+        <button onclick="startMatch()">Start Match</button>
+        <pre id="codeBlock"></pre>
+    </div>
+
+    <script>
+        const moves = [
+            "Asynchronous Assassin enters the ring",
+            "Asynchronous Assassin distracts with a quick jab",
+            "Asynchronous Assassin strikes after a 2-second delay"
+        ];
+
+        const codeLines = [
+            "function asyncMatch() {",
+            "  console.log(\"Asynchronous Assassin enters the ring\");",
+            "",
+            "  setTimeout(() => {",
+            "    console.log(\"Asynchronous Assassin strikes after a 2-second delay\");",
+            "  }, 2000);",
+            "",
+            "  console.log(\"Asynchronous Assassin distracts with a quick jab\");",
+            "}",
+            "",
+            "asyncMatch();"
+        ];
+
+        const codeBlock = document.getElementById('codeBlock');
+        codeLines.forEach(line => {
+            const lineElement = document.createElement('div');
+            lineElement.textContent = line;
+            codeBlock.appendChild(lineElement);
+        });
+
+        function startMatch() {
+            const wrestler = document.getElementById('wrestler');
+            const moveList = document.getElementById('moveList');
+            moveList.innerHTML = '';
+            wrestler.style.left = '0px';
+
+            // Highlight function call
+            codeBlock.children[10].classList.add('highlight');
+            setTimeout(() => codeBlock.children[10].classList.remove('highlight'), 500);
+
+            // First move
+            setTimeout(() => {
+                moveList.innerHTML += `<div>${moves[0]}</div>`;
+                wrestler.style.left = '50px';
+                codeBlock.children[1].classList.add('highlight');
+                setTimeout(() => codeBlock.children[1].classList.remove('highlight'), 500);
+            }, 500);
+
+            // Second move (quick jab)
+            setTimeout(() => {
+                moveList.innerHTML += `<div>${moves[1]}</div>`;
+                wrestler.style.left = '100px';
+                codeBlock.children[7].classList.add('highlight');
+                setTimeout(() => codeBlock.children[7].classList.remove('highlight'), 500);
+            }, 1000);
+
+            // Highlight setTimeout
+            setTimeout(() => {
+                codeBlock.children[3].classList.add('highlight');
+                codeBlock.children[4].classList.add('highlight');
+                codeBlock.children[5].classList.add('highlight');
+                setTimeout(() => {
+                    codeBlock.children[3].classList.remove('highlight');
+                    codeBlock.children[4].classList.remove('highlight');
+                    codeBlock.children[5].classList.remove('highlight');
+                }, 1500);
+            }, 1500);
+
+            // Third move (delayed strike)
+            setTimeout(() => {
+                moveList.innerHTML += `<div>${moves[2]}</div>`;
+                wrestler.style.left = '250px';
+                codeBlock.children[4].classList.add('highlight');
+                setTimeout(() => codeBlock.children[4].classList.remove('highlight'), 500);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

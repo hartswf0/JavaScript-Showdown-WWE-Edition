@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Enforcer Match</title>
+    <style>
+        body {
+            font-family: 'Impact', sans-serif;
+            background-color: #f4e3c3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .wrestle-box {
+            background-color: #fff;
+            border: 5px solid #00ff4d;
+            border-radius: 10px;
+            padding: 20px;
+            width: 600px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #00ff4d;
+            margin-bottom: 20px;
+        }
+        #ring {
+            width: 300px;
+            height: 200px;
+            margin: 0 auto 20px;
+            background-color: #e3d5b6;
+            border: 3px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        #wrestler {
+            width: 50px;
+            height: 50px;
+            background-color: #00ff4d;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 75px;
+            transition: left 1s ease-in-out;
+        }
+        #moveList {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #00ff4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #00cc3d;
+        }
+        #codeBlock {
+            background-color: #f5f5f5;
+            border-left: 4px solid #00ff4d;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: #ffff00;
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrestle-box">
+        <h1>Promise Enforcer Match</h1>
+        <div id="ring">
+            <div id="wrestler"></div>
+        </div>
+        <div id="moveList"></div>
+        <button onclick="startMatch()">Start Match</button>
+        <pre id="codeBlock"></pre>
+    </div>
+
+    <script>
+        const moves = [
+            "Promise Enforcer enters the ring",
+            "Promise Enforcer prepares for the match",
+            "Promise Enforcer makes a promise",
+            "Promise Enforcer resolves the promise"
+        ];
+
+        const codeLines = [
+            "let promiseEnforcer = new Promise((resolve, reject) => {",
+            "  console.log(\"Promise Enforcer enters the ring\");",
+            "  console.log(\"Promise Enforcer prepares for the match\");",
+            "",
+            "  let matchWon = true;  // Simulate outcome",
+            "",
+            "  setTimeout(() => {",
+            "    if (matchWon) {",
+            "      resolve(\"Promise Enforcer wins the match!\");",
+            "    } else {",
+            "      reject(\"Promise Enforcer is defeated...\");",
+            "    }",
+            "  }, 3000);",
+            "});",
+            "",
+            "promiseEnforcer",
+            "  .then(result => console.log(result))",
+            "  .catch(error => console.log(error));"
+        ];
+
+        const codeBlock = document.getElementById('codeBlock');
+        codeLines.forEach(line => {
+            const lineElement = document.createElement('div');
+            lineElement.textContent = line;
+            codeBlock.appendChild(lineElement);
+        });
+
+        function startMatch() {
+            const wrestler = document.getElementById('wrestler');
+            const moveList = document.getElementById('moveList');
+            moveList.innerHTML = '';
+            wrestler.style.left = '0px';
+
+            // Highlight Promise creation
+            codeBlock.children[0].classList.add('highlight');
+            setTimeout(() => codeBlock.children[0].classList.remove('highlight'), 500);
+
+            moves.forEach((move, index) => {
+                setTimeout(() => {
+                    const moveElement = document.createElement('div');
+                    moveElement.textContent = move;
+                    moveList.appendChild(moveElement);
+                    wrestler.style.left = `${(index + 1) * 75}px`;
+                    
+                    // Highlight corresponding code
+                    if (index < 2) {
+                        codeBlock.children[index + 1].classList.add('highlight');
+                        setTimeout(() => codeBlock.children[index + 1].classList.remove('highlight'), 900);
+                    } else if (index === 2) {
+                        for (let i = 4; i <= 12; i++) {
+                            codeBlock.children[i].classList.add('highlight');
+                        }
+                        setTimeout(() => {
+                            for (let i = 4; i <= 12; i++) {
+                                codeBlock.children[i].classList.remove('highlight');
+                            }
+                        }, 900);
+                    }
+                }, index * 1000);
+            });
+
+            // Resolve the promise
+            setTimeout(() => {
+                const resultElement = document.createElement('div');
+                resultElement.textContent = "Promise Enforcer wins the match!";
+                resultElement.style.color = '#00ff4d';
+                resultElement.style.fontWeight = 'bold';
+                moveList.appendChild(resultElement);
+
+                // Highlight .then() execution
+                codeBlock.children[16].classList.add('highlight');
+                setTimeout(() => codeBlock.children[16].classList.remove('highlight'), 900);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
